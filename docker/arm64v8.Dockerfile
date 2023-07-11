@@ -13,6 +13,9 @@ ADD .eslintrc.json ${WORKINGDIR}/.eslintrc.json
 ADD tsconfig.json ${WORKINGDIR}/tsconfig.json
 ADD setup ${WORKINGDIR}/setup
 ADD .scripts ${WORKINGDIR}/.scripts
+ADD webpackconfigs ${WORKINGDIR}/webpackconfigs
+ADD index.d.ts ${WORKINGDIR}/index.d.ts
+ADD assets ${WORKINGDIR}/assets
 ADD src ${WORKINGDIR}/src
 
 RUN npm install -q && \
