@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Switch, Route, Link, Redirect, useLocation } from 'react-router-dom';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { Menu, Grid, Image, Dropdown, Icon } from 'semantic-ui-react';
 import { InfoDialogServiceProvider } from './components/InfoDialogContext';
@@ -14,8 +14,6 @@ export const AppRoutes = {
 };
 
 const App: FC = observer((props: any) => {
-    const location = useLocation();
-
     const logoMenuTitle = `CarPort PLC Client`;
     const logoMenuLink = AppRoutes.Home;
 
@@ -52,12 +50,12 @@ const App: FC = observer((props: any) => {
                 <Grid>
                     <Grid.Row>
                         <Grid.Column>
-                            <Switch>
-                                <Route exact path={AppRoutes.Home} component={HomePage} />
-                                <Route exact path={AppRoutes.User} component={UserPage} />
-                                <Redirect from={location.pathname} to="/" />
+                            <Routes>
+                                <Route path={AppRoutes.Home} element={<HomePage />} />
+                                <Route path={AppRoutes.User} element={<UserPage />} />
+                                <Navigate to="/" />
                                 {props.children}
-                            </Switch>
+                            </Routes>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

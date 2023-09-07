@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { configure } from 'mobx';
 import { store, StoreContext } from './app/stores/store';
 import App from './app/App';
@@ -12,12 +12,12 @@ configure({
 });
 
 async function start() {
-    ReactDOM.render(
-        <Router>
+    render(
+        <BrowserRouter>
             <StoreContext.Provider value={store}>
                 <App />
             </StoreContext.Provider>
-        </Router>,
+        </BrowserRouter>,
         document.getElementById('app')
     );
 }
